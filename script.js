@@ -18,11 +18,14 @@ const init = async function(){
 
     // All fetched results
     posts.results = (formatedData.results);
-    loadPage(9)
+    loadPage(1)
 }
 
 // Load First page
 const loadPage = (page) => {
+
+    // Clear Previous Pagionation
+    pagination.innerHTML = '';
 
     // Current Page
     posts.currentPage = page;
@@ -35,20 +38,34 @@ const loadPage = (page) => {
 
     // Total Pages
     let totalPages = Math.ceil(posts.results.length / posts.postsPerPage);
-    console.log(startPost, endPost)
 
     // Show Current Page
     output.innerHTML = `<h1>Page: ${posts.currentPage}</h1>`;
 
+    // Show All Pages
+    const pageOutput = document.createElement('div');
+    for (let i = 0; i < totalPages; i++) {
+        const span = document.createElement('span');
+        span.textContent = i + 1;
+
+        // Change Page
+        span.addEventListener('click', () => {
+            loadPage(i + 1);
+        })
+
+        pageOutput.append(span);
+    }
+
     // Load first 10 posts
     for (let i = startPost; i < endPost; i++) {
-        console.log(posts.results[i]);
 
         // Show Loaded data in the DOM
         const div = document.createElement('div');
-        div.textContent = `${i} ${posts.results[i].name.first}`;
+        div.textContent = `${i + 1} ${posts.results[i].name.first}`;
         output.appendChild(div);
     }
+
+    pagination.appendChild(pageOutput);
 }
 
 window.addEventListener('load', () => {

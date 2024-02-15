@@ -8,4 +8,13 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.pages {
+  padding: 5px;
+  text-align: center;
+  font-size: 18px;
+}
+.pages div span {
+  margin: 0px 2px;
 }/*# sourceMappingURL=styles.css.map */
