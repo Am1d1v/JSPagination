@@ -51,6 +51,7 @@ const loadPage = (page) => {
     // Show All Pages
     const pageOutput = document.createElement('div');
     pageOutput.classList.add('pageOutput');
+    
 
     for (let i = 0; i < totalPages; i++) {
         const span = document.createElement('span');
@@ -60,6 +61,10 @@ const loadPage = (page) => {
         span.addEventListener('click', () => {
             loadPage(i + 1);
         })
+        
+        if(i + 1 === posts.currentPage){
+            span.classList.add('active');
+        }
 
         pageOutput.append(span);
     }
@@ -70,6 +75,7 @@ const loadPage = (page) => {
         // Show Loaded data in the DOM
         const div = document.createElement('div');
         div.textContent = `${i + 1} ${posts.results[i].name.first}`;
+        
         output.appendChild(div);
     }
 
