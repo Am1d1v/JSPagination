@@ -11,14 +11,20 @@ const posts = {
 // Fetch Users Data
 const init = async function(){
 
-    const dataRequest = await fetch('https://randomuser.me/api/?results=100');
+    try {
+        
+        const dataRequest = await fetch('https://randomuser.me/api/?results=100');
 
-    // Users JSON Format Data
-    const formatedData = await dataRequest.json();
+        // Users JSON Format Data
+        const formatedData = await dataRequest.json();
 
-    // All fetched results
-    posts.results = (formatedData.results);
-    loadPage(1)
+        // All fetched results
+        posts.results = (formatedData.results);
+        loadPage(1)
+
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 // Load First page
