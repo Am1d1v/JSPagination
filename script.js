@@ -12,7 +12,7 @@ const posts = {
 const init = async function(){
 
     try {
-        
+
         const dataRequest = await fetch('https://randomuser.me/api/?results=100');
 
         // Users JSON Format Data
@@ -50,6 +50,8 @@ const loadPage = (page) => {
 
     // Show All Pages
     const pageOutput = document.createElement('div');
+    pageOutput.classList.add('pageOutput');
+
     for (let i = 0; i < totalPages; i++) {
         const span = document.createElement('span');
         span.textContent = i + 1;
