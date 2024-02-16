@@ -72,11 +72,16 @@ const loadPage = (page) => {
     // Load first 10 posts
     for (let i = startPost; i < endPost; i++) {
 
+        // User's data
+        const person = posts.results[i];
+        console.log(person);
+
         // Show Loaded data in the DOM
-        const div = document.createElement('div');
-        div.textContent = `${i + 1} ${posts.results[i].name.first}`;
+        const details = document.createElement('div');
+        details.innerHTML = `<h3>${i + 1} Name: ${person.name.first} ${person.name.last}</h3> <p>Email: ${posts.results[i].email}</p> <p>Phone: ${person.phone}</p>`;
+        details.classList.add('person');
         
-        output.appendChild(div);
+        output.appendChild(details);
     }
 
     pagination.appendChild(pageOutput);
