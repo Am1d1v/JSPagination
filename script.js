@@ -80,6 +80,11 @@ const loadPage = (page) => {
         const details = document.createElement('div');
         details.innerHTML = `<h3>${i + 1} Name: ${person.name.first} ${person.name.last}</h3> <p>Email: ${posts.results[i].email}</p> <p>Phone: ${person.phone}</p>`;
         details.classList.add('person');
+
+        // Person's Image
+        const img = document.createElement('img');
+        img.src = person.picture.large;
+        details.appendChild(img);
         
         output.appendChild(details);
     }
